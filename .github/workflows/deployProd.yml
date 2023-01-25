@@ -1,6 +1,6 @@
 name: Deploy Production Version
 on:
-  [push, pull]:
+    push:
         branches:
             -  main
 jobs:
