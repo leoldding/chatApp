@@ -11,12 +11,18 @@ class App extends React.Component {
             <>
                 <Router>
                     <Routes>
-                        <Route path={"/"} element={<Main />}></Route>
-                        <Route path={"/room/*"} element={<Room />}></Route>
                         <Route
-                            path="*"
-                            element={<Navigate to="/" replace />}
-                        />
+                            path={"/"}
+                            element={<Main />} />
+                        <Route
+                            path={"/room"}
+                            element={<Navigate to={"/"} replace />} />
+                        <Route
+                            path={"/room/*"}
+                            element={<Room />} />
+                        <Route
+                            path={"*"}
+                            element={<Navigate to="/" replace />} />
                     </Routes>
                 </Router>
             </>
