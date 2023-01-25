@@ -1,0 +1,18 @@
+* {
+    font-family: Noto Sans, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #CCCCCC;
+    margin: 1vw;
+    padding: 0;
+}
+
+#chatLog {
+    border-color: #CCCCCC;
+    border-width: 2px;
+    border-style: solid;
+    height: 80vh;
+    background-color: #363636;
+}
