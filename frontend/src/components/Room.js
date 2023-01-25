@@ -8,12 +8,17 @@ class Room extends React.Component {
 
         this.state = {
             inputText: "",
+            roomId: "",
         };
+    }
+
+    async componentDidMount() {
+        let splitURL = window.location.href.split("/");
+        this.setState({roomId: splitURL[splitURL.length - 1]})
     }
 
     sendMessage = async (event) => {
         event.preventDefault();
-        console.log(this.state.inputText);
         this.setState({inputText: ""});
     }
     render() {
