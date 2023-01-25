@@ -8,11 +8,3 @@ body {
     margin: 1vw;
     padding: 0;
 }
-
-#chatLog {
-    border-color: #CCCCCC;
-    border-width: 2px;
-    border-style: solid;
-    height: 80vh;
-    background-color: #363636;
-}
