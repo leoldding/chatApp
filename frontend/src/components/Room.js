@@ -22,9 +22,11 @@ class Room extends React.Component {
         this.setState({inputText: ""});
     }
     render() {
+        let roomId = this.state.roomId;
         return (
             <div>
                 <h1>Chat Room</h1>
+                <p>Room Code: {roomId}</p>
                 <div id={"chatLog"}></div>
                 <form onSubmit={this.sendMessage}>
                     <input type={"text"} placeholder={"Message"} value={this.state.inputText}
