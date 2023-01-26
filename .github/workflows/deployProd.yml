@@ -8,15 +8,22 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v2
-            -   run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            -   name: Docker Login
+                run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-            -   run: docker build -t leoldding/chat-app-frontend ./frontend
-            -   run: docker build -t leoldding/chat-app-backend ./backend
-            -   run: docker build -t leoldding/chat-app-nginx ./nginx
+            -   name: Build Frontend Docker
+                run: docker build -t leoldding/chat-app-frontend ./frontend
+            -   name: Build Backend Docker
+                run: docker build -t leoldding/chat-app-backend ./backend
+            -   name: Build Nginx Docker
+                run: docker build -t leoldding/chat-app-nginx ./nginx
 
-            -   run: docker push leoldding/chat-app-frontend
-            -   run: docker push leoldding/chat-app-backend
-            -   run: docker push leoldding/chat-app-nginx
+            -   name: Push Frontend Docker
+                run: docker push leoldding/chat-app-frontend
+            -   name: Push Backend Docker
+                run: docker push leoldding/chat-app-backend
+            -   name: Push Nginx Docker
+                run: docker push leoldding/chat-app-nginx
 
             -   name: Generate deployment package
                 run: zip -r deploy.zip . -x '*.git*'
