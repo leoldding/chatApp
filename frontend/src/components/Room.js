@@ -19,8 +19,16 @@ class Room extends React.Component {
 
     sendMessage = async (event) => {
         event.preventDefault();
-        this.setState({inputText: ""});
+        if (this.state.inputText !== "") {
+            let log = document.getElementById("chatLog");
+            let msg = document.createElement("div");
+            msg.innerHTML = this.state.inputText;
+            log.appendChild(msg);
+            log.scrollTop = log.scrollHeight - log.clientHeight;
+            this.setState({inputText: ""});
+        }
     }
+
     render() {
         let roomId = this.state.roomId;
         return (
