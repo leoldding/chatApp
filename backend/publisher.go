@@ -1,5 +1,7 @@
 package main
 
+import "log"
+
 var pub = publisher{
 	broadcast:  make(chan message),
 	register:   make(chan subscriber),
@@ -11,6 +13,7 @@ func (pub *publisher) publish() {
 	for {
 		select {
 		case sub := <-pub.register:
+			log.Println("REGISTERING ROOM " + sub.roomId)
 			conns := pub.rooms[sub.roomId]
 			if conns == nil {
 				conns = make(map[*connection]bool)
@@ -18,6 +21,7 @@ func (pub *publisher) publish() {
 			}
 			pub.rooms[sub.roomId][sub.conn] = true
 		case sub := <-pub.deregister:
+			log.Println("DEREGISTERING ROOM " + sub.roomId)
 			conns := pub.rooms[sub.roomId]
 			if conns != nil {
 				if _, ok := conns[sub.conn]; ok {
