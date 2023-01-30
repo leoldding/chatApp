@@ -12,9 +12,14 @@ class Room extends React.Component {
         };
     }
 
+    ws = new WebSocket('ws://' + window.location.host + '/ws' + window.location.pathname)
+
     async componentDidMount() {
         let splitURL = window.location.href.split("/");
         this.setState({roomId: splitURL[splitURL.length - 1]})
+        this.ws.onopen = () => {
+            console.log('room connected')
+        }
     }
 
     sendMessage = async (event) => {
