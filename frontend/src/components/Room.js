@@ -12,7 +12,7 @@ class Room extends React.Component {
         };
     }
 
-    ws = new WebSocket('ws://' + window.location.host + '/ws' + window.location.pathname)
+    ws = new WebSocket('wss://' + window.location.host + '/ws' + window.location.pathname)
 
     async componentDidMount() {
         let log = document.getElementById("chatLog")
