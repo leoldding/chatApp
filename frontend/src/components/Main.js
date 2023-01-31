@@ -13,15 +13,15 @@ class Main extends React.Component {
     }
 
     createRoom = async (event) => {
-        event.preventDefault();
-        let roomId = nanoid(6);
+        event.preventDefault()
+        let roomId = nanoid(6)
         window.location.href = window.location.protocol + '//' + window.location.host + '/room/' + roomId;
     }
 
     joinRoom = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
         if (this.state.roomId !==  '') {
-            window.location.href = window.location.protocol + '//' + window.location.host + '/room/' + this.state.roomId;
+            window.location.href = window.location.protocol + '//' + window.location.host + '/room/' + this.state.roomId
         }
     }
     render() {

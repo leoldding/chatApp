@@ -1,10 +1,17 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func main() {
 	http.HandleFunc("/ping", ping)
 
+	http.HandleFunc("/ws", mainWS)
+
+	http.HandleFunc("/ws/", roomWS)
+
+	go pub.publish()
 	http.ListenAndServe(":8080", nil)
 	return
 }
